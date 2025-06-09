@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">GlasHaus</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1 id="header-title">GlasHaus</h1>
+        </div>
+        <div class="header-right">
+            <button class="menu-toggle" id="menu-toggle" aria-label="Открыть меню">☰</button>
+            <div class="contact-info">
+                <span>+49 123 456 78 90</span>
+                <span>|</span>
+                <span>+49 123 456 78 91</span>
+            </div>
+            <div class="lang-switch">
+                <a href="#" onclick="changeLanguage('de')">DE</a> |
+                <a href="#" onclick="changeLanguage('ru')">RU</a> |
+                <a href="#" onclick="changeLanguage('en')">EN</a>
+            </div>
+            <nav id="nav-menu" class="nav-menu">
+                <a href="index.html#home" id="nav-home"></a>
+                <a href="about.html" id="nav-about"></a>
+                <a href="gallery.html" id="nav-gallery"></a>
+                <a href="contact.html" id="nav-contact"></a>
+                <a href="feedback.html" id="nav-feedback"></a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="feedback-section">
+            <div class="feedback-content">
+                <h2 id="feedback-title"></h2>
+                <div class="contact-info">
+                    <p>Email: <a href="mailto:glashaus.dkd@gmx.de">glashaus.dkd@gmx.de</a></p>
+                    <p>Phone: +49 123 456 78 90</p>
+                    <p>Phone: +49 123 456 78 91</p>
+                </div>
+                <div class="contact-form">
+                    <h3 id="form-title"></h3>
+                    <form id="feedbackForm">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="" required>
+
+                        <label for="email">E-Mail</label>
+                        <input type="email" id="email" name="email" placeholder="" required>
+
+                        <label for="message">Nachricht</label>
+                        <textarea id="message" name="message" rows="5" placeholder="" required></textarea>
+
+                        <button type="submit" id="submit">Senden</button>
+                    </form>
+                    <p id="successMessage" style="display: none;">Vielen Dank für Ihre Nachricht!</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <span id="footer"></span>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        document.getElementById('feedbackForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            const subject = encodeURIComponent(`Feedback von ${name}`);
+            const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nNachricht:\n${message}`);
+            const mailtoLink = `mailto:glashaus.dkd@gmx.de?subject=${subject}&body=${body}`;
+            window.location.href = mailtoLink;
+            document.getElementById('successMessage').style.display = 'block';
+            this.reset();
+            setTimeout(() => {
+                document.getElementById('successMessage').style.display = 'none';
+            }, 3000);
+        });
+    </script>
+</body>
+</html>

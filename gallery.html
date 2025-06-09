@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">GlasHaus</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1 id="header-title">GlasHaus</h1>
+        </div>
+        <div class="header-right">
+            <button class="menu-toggle" id="menu-toggle" aria-label="Открыть меню">☰</button>
+            <div class="contact-info">
+                <span>+49 123 456 78 90</span>
+                <span>|</span>
+                <span>+49 123 456 78 91</span>
+            </div>
+            <div class="lang-switch">
+                <a href="#" onclick="changeLanguage('de')">DE</a> |
+                <a href="#" onclick="changeLanguage('ru')">RU</a> |
+                <a href="#" onclick="changeLanguage('en')">EN</a>
+            </div>
+            <nav id="nav-menu" class="nav-menu">
+                <a href="index.html#home" id="nav-home"></a>
+                <a href="about.html" id="nav-about"></a>
+                <a href="gallery.html" id="nav-gallery"></a>
+                <a href="contact.html" id="nav-contact"></a>
+                <a href="feedback.html" id="nav-feedback"></a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="gallery-section">
+            <h2 id="gallery-title" class="section-title"></h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="images/1.jpg" alt="Modern veranda for a private house">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/2.jpg" alt="Glass facade for an office building">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/3.jpg" alt="Cozy winter garden with panoramic windows">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/4.jpg" alt="Cozy winter garden with panoramic windows">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/5.jpg" alt="Cozy winter garden with panoramic windows">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/6.jpg" alt="Cozy winter garden with panoramic windows">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/7.jpg" alt="Cozy winter garden with panoramic windows">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/10.jpg" alt="Cozy winter garden with panoramic windows">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/11.jpg" alt="Cozy winter garden with panoramic windows">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/12.jpg" alt="Cozy winter garden with panoramic windows">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/13.jpg" alt="Cozy winter garden with panoramic windows">
+                </div>
+                <div class="gallery-item">
+                    <img src="images/14.jpg" alt="Cozy winter garden with panoramic windows">
+                </div>
+            </div>
+        </section>
+    </main>
+    <div id="modal" class="modal">
+        <span class="close">×</span>
+        <img class="modal-content" id="modal-img">
+        <div class="modal-caption" id="modal-caption"></div>
+    </div>
+    <footer>
+        <span id="footer"></span>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+        const modal = document.getElementById('modal');
+        const modalImg = document.getElementById('modal-img');
+        const modalCaption = document.getElementById('modal-caption');
+        const close = document.querySelector('.close');
+        document.querySelectorAll('.gallery-item img').forEach(img => {
+            img.onclick = function() {
+                modal.style.display = "flex";
+                modalImg.src = this.src;
+                modalImg.alt = this.alt;
+                modalCaption.textContent = this.alt; // Используем alt как подпись
+            }
+        });
+        close.onclick = function() {
+            modal.style.display = "none";
+        }
+        window.onclick = function(event) {
+            if (event.target == modal) modal.style.display = "none";
+        }
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

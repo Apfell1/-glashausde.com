@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">GlasHaus</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1 id="header-title">GlasHaus</h1>
+        </div>
+        <div class="header-right">
+            <button class="menu-toggle" id="menu-toggle" aria-label="Открыть меню">☰</button>
+            <div class="contact-info">
+                <span>+49 123 456 78 90</span>
+                <span>|</span>
+                <span>+49 123 456 78 91</span>
+            </div>
+            <div class="lang-switch">
+                <a href="#" onclick="changeLanguage('de')">DE</a> |
+                <a href="#" onclick="changeLanguage('ru')">RU</a> |
+                <a href="#" onclick="changeLanguage('en')">EN</a>
+            </div>
+            <nav id="nav-menu" class="nav-menu">
+                <a href="index.html#home" id="nav-home"></a>
+                <a href="about.html" id="nav-about"></a>
+                <a href="gallery.html" id="nav-gallery"></a>
+                <a href="contact.html" id="nav-contact"></a>
+                <a href="feedback.html" id="nav-feedback"></a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="contact" class="contact-section">
+            <h2 id="contact-title" class="section-title"></h2>
+            <div class="contact-details">
+                <p id="contact-intro"></p>
+                <p><span id="email-label"></span> <a href="mailto:glashaus.dkd@gmx.de">glashaus.dkd@gmx.de</a></p>
+                <p><span id="phone1-label"></span> +49 123 456 78 90</p>
+                <p><span id="phone2-label"></span> +49 123 456 78 91</p>
+                <p id="location-info"></p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <span id="footer"></span>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

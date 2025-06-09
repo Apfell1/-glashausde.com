@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">GlasHaus</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <h1 id="header-title">GlasHaus</h1>
+        </div>
+        <div class="header-right">
+            <button class="menu-toggle" id="menu-toggle" aria-label="Открыть меню">☰</button>
+            <div class="contact-info">
+                <span>+49 123 456 78 90</span>
+                <span>|</span>
+                <span>+49 123 456 78 91</span>
+            </div>
+            <div class="lang-switch">
+                <a href="#" onclick="changeLanguage('de')">DE</a> |
+                <a href="#" onclick="changeLanguage('ru')">RU</a> |
+                <a href="#" onclick="changeLanguage('en')">EN</a>
+            </div>
+            <nav id="nav-menu" class="nav-menu">
+                <a href="index.html#home" id="nav-home"></a>
+                <a href="about.html" id="nav-about"></a>
+                <a href="gallery.html" id="nav-gallery"></a>
+                <a href="contact.html" id="nav-contact"></a>
+                <a href="feedback.html" id="nav-feedback"></a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="feedback" class="contact-section">
+            <h2 id="feedback-title" class="section-title">Обратная связь</h2>
+            <form>
+                <h2 id="form-title"></h2>
+                <label for="name" id="form-name"></label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email" id="form-email"></label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message" id="form-message"></label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+
+                <button type="submit" id="form-submit"></button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <span id="footer"></span>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        const menuToggle = document.getElementById('menu-toggle');
+        const navMenu = document.getElementById('nav-menu');
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+    </script>
+</body>
+</html>

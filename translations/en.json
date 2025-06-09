@@ -1,0 +1,41 @@
+{
+  "title": "GlasHaus",
+  "header-title": "GlasHaus",
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "services": "Services",
+    "gallery": "Gallery",
+    "contact": "Contact",
+    "feedback": "Feedback"
+  },
+  "hero-title": "Modern Glass Constructions",
+  "hero-desc": "Planning, Manufacturing, and Installation of Glass Verandas, Facades, and Partitions",
+  "hero-cta": "Contact Us",
+  "gallery": "Gallery",
+  "video": "Video",
+  "form": {
+    "title": "Leave Feedback",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "submit": "Send"
+  },
+  "about-title": "About Us",
+  "about-text": "We specialize in the design, manufacturing, and installation of custom-made glass structures. Our company delivers elegant and functional solutions such as glass verandas, winter gardens, canopies, terraces, sliding systems, and façade glazing. Each project is tailored to fit the architectural characteristics of the property and the individual needs of our clients. We use only certified materials and advanced technologies to ensure superior quality, reliability, and durability. We serve both private homeowners and commercial clients, offering a full range of services — from concept to installation.",
+  "contact-title": "Contact",
+  "feedback-title": "Feedback",
+  "by-authority": "By Authority",
+  "footer": "All Rights Reserved. | Contact: <a href='mailto:glashaus.dkd@gmx.de'>glashaus.dkd@gmx.de</a> | Phone: +49 151 565 78 536 | +49 151 723 85 102",
+  "caption-veranda": "Modern veranda for a private house",
+  "caption-canopy": "Glass facade for an office building",
+  "caption-wintergarden": "Cozy winter garden with panoramic windows",
+  "contact-details": {
+    "contact-title": "Contact Us",
+    "contact-intro": "At GlasHaus, we’re always ready to turn your vision into stunning glass realities. Reach out to us and let’s shape your next project together!",
+    "email-label": "Email:",
+    "phone1-label": "Phone:",
+    "phone2-label": "Phone:",
+    "location-info": "We are proudly located in the heart of Germany, in the vibrant city of Elmshorn. From here, we deliver innovative glass solutions with unmatched precision and German quality to clients across Europe and beyond."
+  }
+}

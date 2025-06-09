@@ -1,0 +1,39 @@
+{
+  "title": "GlasHaus",
+  "header-title": "GlasHaus",
+  "nav": {
+    "home": "Startseite",
+    "about": "Über uns",
+    "services": "Leistungen",
+    "gallery": "Galerie",
+    "contact": "Kontakt",
+    "feedback": "Feedback"
+  },
+  "hero-title": "Moderne Glaskonstruktionen",
+  "hero-desc": "Planung, Herstellung und Montage von Glasveranden, Fassaden und Trennwänden",
+  "hero-cta": "Kontaktieren Sie uns",
+  "gallery": "Galerie",
+  "video": "Video",
+  "form": {
+    "title": "Feedback geben",
+    "name": "Name",
+    "email": "E-Mail",
+    "message": "Nachricht",
+    "submit": "Senden"
+  },
+  "about-title": "Über uns",
+  "about-text": "Unser Unternehmen ist auf die Planung, Herstellung und Montage von Glasbauten nach Maß spezialisiert. Wir bieten ästhetische und funktionale Lösungen wie Glasveranden, Wintergärten, Überdachungen, Terrassen, Schiebesysteme und Fassadenverglasungen. Jedes Projekt wird individuell an die architektonischen Gegebenheiten und Kundenwünsche angepasst. Wir verwenden ausschließlich hochwertige Materialien und moderne Technologien, um Langlebigkeit und höchste Qualität zu gewährleisten. Unsere Dienstleistungen richten sich sowohl an Privatpersonen als auch an Geschäftskunden – von der Idee bis zur fertigen Montage.",
+  "contact-title": "Kontakt",
+  "feedback-title": "Feedback",
+  "by-authority": "Im Auftrag",
+  "footer": "Alle Rechte vorbehalten. | Kontakt: <a href='mailto:glashaus.dkd@gmx.de'>glashaus.dkd@gmx.de</a> | Telefon: +49 151 565 78 536 | +49 151 723 85 102",
+  "caption-veranda": "Moderne Glasveranda für ein Privathaus",
+  "caption-canopy": "Glasfassade für ein Bürogebäude",
+  "caption-wintergarden": "Gemütlicher Wintergarten mit Panoramafenstern",
+  "contact-title-extended": "Kontaktieren Sie uns",
+  "contact-intro": "Bei GlasHaus stehen wir Ihnen jederzeit zur Verfügung, um Ihre Visionen in Glas zu verwandeln. Kontaktieren Sie uns und lassen Sie uns gemeinsam Ihr nächstes Projekt gestalten!",
+  "email-label": "E-Mail:",
+  "phone1-label": "Telefon:",
+  "phone2-label": "Telefon:",
+  "location-info": "Unser Sitz befindet sich im Herzen Deutschlands, in der dynamischen Stadt Elmshorn. Von hier aus bieten wir Ihnen innovative Glaslösungen mit höchster Präzision und deutscher Qualität – für Kunden in ganz Europa und darüber hinaus."
+}
