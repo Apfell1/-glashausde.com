@@ -94,6 +94,7 @@ header {
     border: none;
     color: #fff;
     cursor: pointer;
+    position: relative; /* Убрано absolute для тестирования */
 }
 
 .hero {
@@ -541,6 +542,7 @@ footer a:hover {
         flex-direction: column;
         padding: 15px;
         align-items: center;
+        position: relative; /* Добавлено для правильного позиционирования */
     }
     .logo {
         margin-bottom: 15px;
@@ -596,6 +598,20 @@ footer a:hover {
         position: absolute;
         top: 15px;
         right: 15px;
+        z-index: 1001; /* Увеличен z-index для перекрытия меню */
+    }
+    .hero-content h2,
+    .hero-content p,
+    .section-title,
+    .about-content,
+    .feedback-content h2,
+    .feedback-content p,
+    .contact-details p,
+    .contact-form label,
+    .contact-form input,
+    .contact-form textarea,
+    .contact-form button {
+        text-align: center; /* Выравнивание текста на всех страницах */
     }
     .hero-content h2 {
         font-size: 32px;
