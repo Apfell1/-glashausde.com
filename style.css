@@ -627,3 +627,23 @@ footer a:hover {
     padding: 0;
   }
 }
+@media (max-width: 768px) {
+  .contact-info {
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100%;
+    gap: 5px;
+    text-align: center;
+    margin: 0 auto 10px auto !important;
+  }
+  .contact-info a,
+  .contact-info span {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin: 0 !important;
+    word-break: break-all;
+    font-size: 16px;
+  }
+}
