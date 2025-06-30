@@ -573,3 +573,57 @@ footer a:hover {
     font-size: 16px;
     animation: fadeIn 1s ease-in;
 }
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+    font-size: 16px;
+  }
+  .header-right {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    background: #fff;
+    position: absolute;
+    top: 60px;
+    right: 10px;
+    left: 10px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    border-radius: 8px;
+    padding: 10px 0;
+    z-index: 1000;
+  }
+  .nav-menu.active {
+    display: flex;
+  }
+  .menu-toggle {
+    display: block;
+    font-size: 28px;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  .contact-info, .lang-switch {
+    font-size: 14px;
+  }
+}
+
+/* По желанию: скрыть кнопку меню на большом экране */
+@media (min-width: 769px) {
+  .menu-toggle {
+    display: none;
+  }
+  .nav-menu {
+    display: flex !important;
+    flex-direction: row;
+    position: static;
+    box-shadow: none;
+    background: transparent;
+    gap: 20px;
+    padding: 0;
+  }
+}
