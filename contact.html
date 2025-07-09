@@ -5,6 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="page-title">GlasHaus</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Центрирование секции по всей высоте */
+        .contact-section {
+            min-height: 80vh;
+            padding: 60px 0;
+            background: url('images/15.jpg') no-repeat center/cover; /* если нужен именно фон 15.jpg */
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;     /* вертикальное центрирование */
+            align-items: center;         /* горизонтальное центрирование */
+        }
+        .contact-details {
+            text-align: center;
+        }
+        .section-title {
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -35,19 +54,19 @@
 
     <main>
         <section id="contact" class="contact-section">
-            <h2 id="contact-title" class="section-title"></h2>
+            <h2 id="contact-title" class="section-title">Связаться с нами</h2>
             <div class="contact-details">
-                <p id="contact-intro"></p>
-                <p><span id="email-label"></span> <a href="mailto:glashaus.dkd@gmx.de">glashaus.dkd@gmx.de</a></p>
-                <p><span id="phone1-label"></span> +49 151 565 78 536</p>
-                <p><span id="phone2-label"></span> +49 151 723 85 102</p>
-                <p id="location-info"></p>
+                <p id="contact-intro">Вы можете связаться с нами любым удобным способом:</p>
+                <p><span id="email-label">Email:</span> <a href="mailto:glashaus.dkd@gmx.de">glashaus.dkd@gmx.de</a></p>
+                <p><span id="phone1-label">Телефон 1:</span> +49 151 565 78 536</p>
+                <p><span id="phone2-label">Телефон 2:</span> +49 151 723 85 102</p>
+                <p id="location-info">Германия, Берлин</p>
             </div>
         </section>
     </main>
 
     <footer>
-        <span id="footer"></span>
+        <span id="footer">© GlasHaus, 2025</span>
     </footer>
 
     <script src="script.js"></script>
