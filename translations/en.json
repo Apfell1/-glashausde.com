@@ -21,23 +21,22 @@
     "message": "Message",
     "submit": "Send"
   },
-  "about-title": "About Us",
-  "about-text": "Our company specializes in drywall and interior finishing. We design, build and install gypsum board walls, ceilings and coverings of any complexity – precisely, cleanly and on time. Every project is developed individually, tailored to the room’s characteristics and the client’s vision. We use only high-quality materials and modern systems to ensure durability and a flawless appearance. Our goal is to create functional and aesthetic interiors that combine comfort and quality. We work with both private and commercial clients – from planning to final completion.",
+  {
+  "about-title": "About us",
+  "about-text": "Our company specializes in drywall and interior finishing. We design, install and finish gypsum board walls, ceilings and coverings with precision and care. Each project is individually tailored to the room’s purpose and the client’s design vision. We use only high-quality materials and modern techniques to ensure durability, aesthetics and comfort. Our goal is to create functional and stylish interiors for both private and commercial clients – from concept to completion.",
   "contact-title": "Contact",
   "feedback-title": "Feedback",
-  "by-authority": "By Authority",
-  "footer": "All Rights Reserved. | Contact: <a href='mailto:glashaus.dkd@gmx.de'>glashaus.dkd@gmx.de</a> | Phone: +49 151 565 78 536 | +49 151 723 85 102",
-  "caption-veranda": "Modern veranda for a private house",
-  "caption-canopy": "Glass facade for an office building",
-  "caption-wintergarden": "Cozy winter garden with panoramic windows",
-  "contact-details": {
-    "contact-title": "Contact Us",
-    "contact-intro": "At GlasHaus, we’re always ready to turn your vision into stunning glass realities. Reach out to us and let’s shape your next project together!",
-    "email-label": "Email:",
-    "phone1-label": "Phone:",
-    "phone2-label": "Phone:",
-    "location-info": "We are proudly located in the heart of Germany, in the vibrant city of Elmshorn. From here, we deliver innovative glass solutions with unmatched precision and German quality to clients across Europe and beyond."
-  }
-
+  "by-authority": "On behalf of",
+  "footer": "All rights reserved. | Contact: <a href='mailto:service@glashausde.com'>service@glashausde.com</a> | Phone: +49 151 565 78 536 | +49 151 723 85 102",
+  "caption-veranda": "Modern drywall interior solutions",
+  "caption-canopy": "Suspended gypsum ceiling in office area",
+  "caption-wintergarden": "Decorative gypsum wall finish for living spaces",
+  "contact-title-extended": "Contact us",
+  "contact-intro": "At Gipsy Cartoon, we’re always ready to help bring your interior design ideas to life. Get in touch with us – together we’ll make your drywall project a success!",
+  "email-label": "E-Mail:",
+  "phone1-label": "Phone:",
+  "phone2-label": "Phone:",
+  "location-info": "We are based in Germany and provide professional drywall and interior finishing services – precise, reliable and of high German quality."
 }
+
 
