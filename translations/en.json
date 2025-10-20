@@ -21,7 +21,6 @@
     "message": "Message",
     "submit": "Send"
   },
-  {
   "about-title": "About us",
   "about-text": "Our company specializes in drywall and interior finishing. We design, install and finish gypsum board walls, ceilings and coverings with precision and care. Each project is individually tailored to the room’s purpose and the client’s design vision. We use only high-quality materials and modern techniques to ensure durability, aesthetics and comfort. Our goal is to create functional and stylish interiors for both private and commercial clients – from concept to completion.",
   "contact-title": "Contact",
@@ -38,5 +37,6 @@
   "phone2-label": "Phone:",
   "location-info": "We are based in Germany and provide professional drywall and interior finishing services – precise, reliable and of high German quality."
 }
+
 
 
