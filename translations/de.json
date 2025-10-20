@@ -21,21 +21,23 @@
     "message": "Nachricht",
     "submit": "Senden"
   },
+  {
   "about-title": "Über uns",
-  "about-text": "Unser Unternehmen ist auf Trockenbau und Innenausbau spezialisiert. Wir planen, gestalten und montieren Gipskartonwände, Decken und Verkleidungen jeder Art – präzise, sauber und termingerecht. Jedes Projekt wird individuell nach den Anforderungen des Raumes und den Vorstellungen unserer Kunden umgesetzt. Wir verwenden ausschließlich hochwertige Materialien und moderne Systeme, um eine perfekte Optik und langfristige Stabilität zu gewährleisten. Unser Ziel ist es, funktionale und ästhetische Innenräume zu schaffen, die Komfort und Qualität vereinen. Unsere Dienstleistungen richten sich sowohl an private als auch an gewerbliche Kunden – von der Planung bis zur fertigen Umsetzung.",
+  "about-text": "Unser Unternehmen ist auf Trockenbau und Innenausbau spezialisiert. Wir planen, gestalten und montieren Gipskartonwände, Decken und Verkleidungen mit höchster Präzision und Sorgfalt. Jedes Projekt wird individuell umgesetzt, abgestimmt auf Raum, Funktion und Designwünsche unserer Kunden. Wir arbeiten ausschließlich mit hochwertigen Materialien und modernen Systemen, um Qualität, Langlebigkeit und Ästhetik zu vereinen. Unser Ziel ist es, Räume zu schaffen, die Komfort, Stil und Funktionalität verbinden – für private und gewerbliche Kunden, vom Konzept bis zur Fertigstellung.",
   "contact-title": "Kontakt",
   "feedback-title": "Feedback",
   "by-authority": "Im Auftrag",
-  "footer": "Alle Rechte vorbehalten. | Kontakt: <a href='mailto:glashaus.dkd@gmx.de'>glashaus.dkd@gmx.de</a> | Telefon: +49 151 565 78 536 | +49 151 723 85 102",
-  "caption-veranda": "Moderne Glasveranda für ein Privathaus",
-  "caption-canopy": "Glasfassade für ein Bürogebäude",
-  "caption-wintergarden": "Gemütlicher Wintergarten mit Panoramafenstern",
+  "footer": "Alle Rechte vorbehalten. | Kontakt: <a href='mailto:service@glashausde.com'>service@glashausde.com</a> | Telefon: +49 151 565 78 536 | +49 151 723 85 102",
+  "caption-veranda": "Innenausbau mit modernen Gipskartonlösungen",
+  "caption-canopy": "Abgehängte Decke aus Gipskarton in Bürobereich",
+  "caption-wintergarden": "Individuelle Wandverkleidung aus Gipskarton für Wohnräume",
   "contact-title-extended": "Kontaktieren Sie uns",
-  "contact-intro": "Bei GlasHaus stehen wir Ihnen jederzeit zur Verfügung, um Ihre Visionen in Glas zu verwandeln. Kontaktieren Sie uns und lassen Sie uns gemeinsam Ihr nächstes Projekt gestalten!",
+  "contact-intro": "Bei Gipsy Cartoon stehen wir Ihnen jederzeit zur Verfügung, um Ihre Innenräume professionell zu gestalten. Kontaktieren Sie uns – gemeinsam realisieren wir Ihr nächstes Trockenbauprojekt!",
   "email-label": "E-Mail:",
   "phone1-label": "Telefon:",
   "phone2-label": "Telefon:",
-  "location-info": "Unser Sitz befindet sich im Herzen Deutschlands, in der dynamischen Stadt Elmshorn. Von hier aus bieten wir Ihnen innovative Glaslösungen mit höchster Präzision und deutscher Qualität – für Kunden in ganz Europa und darüber hinaus."
-
+  "location-info": "Unser Sitz befindet sich in Deutschland. Von hier aus bieten wir hochwertige Trockenbau- und Innenausbauleistungen – präzise, zuverlässig und mit deutscher Qualität."
 }
+
+
 
