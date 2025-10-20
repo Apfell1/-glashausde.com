@@ -3,32 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">GlasHaus</title>
+    <title id="page-title">Gipsy Cartoon Trockenbau</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        /* Центрирование секции по всей высоте */
         .contact-section {
             min-height: 80vh;
             padding: 60px 0;
-            background: url('images/15.jpg') no-repeat center/cover; /* если нужен именно фон 15.jpg */
-            position: relative;
+            background: url('images/15.jpg') no-repeat center/cover;
             display: flex;
             flex-direction: column;
-            justify-content: center;     /* вертикальное центрирование */
-            align-items: center;         /* горизонтальное центрирование */
+            justify-content: center;
+            align-items: center;
         }
         .contact-details {
             text-align: center;
+            background-color: rgba(255, 255, 255, 0.85);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
         }
         .section-title {
             text-align: center;
+            margin-bottom: 20px;
+        }
+        .contact-details a {
+            color: #0073aa;
+            text-decoration: none;
+        }
+        .contact-details a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
 <body>
     <header>
         <div class="logo">
-            <h1 id="header-title">GlasHaus</h1>
+            <h1 id="header-title">Gipsy Cartoon</h1>
         </div>
         <div class="header-right">
             <button class="menu-toggle" id="menu-toggle" aria-label="Открыть меню">☰</button>
@@ -54,19 +64,19 @@
 
     <main>
         <section id="contact" class="contact-section">
-            <h2 id="contact-title" class="section-title">Связаться с нами</h2>
+            <h2 id="contact-title" class="section-title"></h2>
             <div class="contact-details">
-                <p id="contact-intro">Вы можете связаться с нами любым удобным способом:</p>
-                <p><span id="email-label">Email:</span> <a href="mailto:glashaus.dkd@gmx.de">glashaus.dkd@gmx.de</a></p>
-                <p><span id="phone1-label">Телефон 1:</span> +49 151 565 78 536</p>
-                <p><span id="phone2-label">Телефон 2:</span> +49 151 723 85 102</p>
-                <p id="location-info">Германия, Берлин</p>
+                <p id="contact-intro"></p>
+                <p><span id="email-label"></span> <a href="mailto:service@glashausde.com">service@glashausde.com</a></p>
+                <p><span id="phone1-label"></span> +49 151 565 78 536</p>
+                <p><span id="phone2-label"></span> +49 151 723 85 102</p>
+                <p id="location-info"></p>
             </div>
         </section>
     </main>
 
     <footer>
-        <span id="footer">© GlasHaus, 2025</span>
+        <span id="footer"></span>
     </footer>
 
     <script src="script.js"></script>
@@ -76,6 +86,23 @@
         menuToggle.addEventListener('click', () => {
             navMenu.classList.toggle('active');
         });
+
+        // Загрузка языкового JSON
+        async function loadLanguage(lang) {
+            const response = await fetch(`contact.${lang}.json`);
+            const data = await response.json();
+            for (const key in data) {
+                const el = document.getElementById(key);
+                if (el) el.innerHTML = data[key];
+            }
+        }
+
+        function changeLanguage(lang) {
+            loadLanguage(lang);
+        }
+
+        // По умолчанию русский
+        loadLanguage('ru');
     </script>
 </body>
 </html>
