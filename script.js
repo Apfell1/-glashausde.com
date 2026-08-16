@@ -41,7 +41,7 @@ async function loadLanguage(lang) {
 
         document.querySelectorAll('.lang-switch a').forEach(a => {
             a.classList.remove('active-lang');
-            if (a.getAttribute('onclick').includes(`'${lang}'`)) {
+            if (a.getAttribute('onclick') && a.getAttribute('onclick').includes(`'${lang}'`)) {
                 a.classList.add('active-lang');
             }
         });
