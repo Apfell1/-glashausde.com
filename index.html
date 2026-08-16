@@ -1,67 +1,114 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">GlasHaus Service</title>
+    <title data-i18n="pageTitle">GH Service | Fenster & Montage</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
+    <header class="site-header">
         <div class="logo">
-            <h1 id="header-title">GlasHaus Service</h1>
+            <a href="index.html">
+                <img src="images/logo.png" alt="GH Service" class="logo-img">
+            </a>
         </div>
         <div class="header-right">
-            <button class="menu-toggle" id="menu-toggle" aria-label="Открыть меню">☰</button>
-            <div class="contact-info">
-                <span>+49 151 565 78 536</span>
-                <span>|</span>
-                <span>+49 151 723 85 102</span>
-            </div>
+            <button class="menu-toggle" id="menu-toggle">☰</button>
+            <div class="contact-info">📞 +49 15567548964</div>
             <div class="lang-switch">
-                <a href="#" onclick="changeLanguage('de')">DE</a> |
-                <a href="#" onclick="changeLanguage('ru')">RU</a> |
-                <a href="#" onclick="changeLanguage('en')">EN</a>
+                <a href="#" onclick="changeLanguage('de', event)">DE</a> |
+                <a href="#" onclick="changeLanguage('ru', event)">RU</a> |
+                <a href="#" onclick="changeLanguage('en', event)">EN</a>
             </div>
             <nav id="nav-menu" class="nav-menu">
-                <a href="index.html#home" id="nav-home"></a>
-                <a href="about.html" id="nav-about"></a>
-                <a href="gallery.html" id="nav-gallery"></a>
-                <a href="contact.html" id="nav-contact"></a>
-                <a href="feedback.html" id="nav-feedback"></a>
-                <!-- Добавленные страницы конфиденциальности и imprint -->
-                <a href="datenschutz.html" id="nav-datenschutz" aria-label="Datenschutz"></a>
-                <a href="impressum.html" id="nav-impressum" aria-label="Impressum"></a>
+                <a href="index.html" data-i18n="navHome"></a>
+                <a href="about.html" data-i18n="navAbout"></a>
+                <a href="gallery.html" data-i18n="navGallery"></a>
+                <a href="contact.html" data-i18n="navContact"></a>
+                <a href="feedback.html" data-i18n="navFeedback"></a>
             </nav>
         </div>
     </header>
 
     <main>
-        <section id="home" class="hero">
+        <section class="hero fade-in">
             <div class="hero-content">
-                <h2 id="hero-title"></h2>
-                <p id="hero-desc"></p>
-                <a href="contact.html" class="cta-button" id="hero-cta">Связаться с нами</a>
+                <h2 data-i18n="heroTitle"></h2>
+                <p data-i18n="heroDesc"></p>
+                <a href="contact.html" class="cta-button" data-i18n="heroCta"></a>
+            </div>
+        </section>
+
+        <section class="info-section dark-bg">
+            <h2 class="section-title fade-in" data-i18n="benefitsTitle"></h2>
+            <div class="grid-container">
+                <div class="card fade-in">
+                    <div class="card-icon">🔥</div>
+                    <h3 data-i18n="benefit1Title"></h3>
+                    <p data-i18n="benefit1Desc"></p>
+                </div>
+                <div class="card fade-in">
+                    <div class="card-icon">🔇</div>
+                    <h3 data-i18n="benefit2Title"></h3>
+                    <p data-i18n="benefit2Desc"></p>
+                </div>
+                <div class="card fade-in">
+                    <div class="card-icon">🛡️</div>
+                    <h3 data-i18n="benefit3Title"></h3>
+                    <p data-i18n="benefit3Desc"></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="info-section light-bg">
+            <h2 class="section-title fade-in" data-i18n="profilesTitle"></h2>
+            <div class="grid-container">
+                <div class="card profile-card fade-in" style="border-top: 5px solid #e60000;">
+                    <h3 style="color: #e60000;">GLASSO</h3>
+                    <h4 data-i18n="prof1Subtitle"></h4>
+                </div>
+                <div class="card profile-card fade-in" style="border-top: 5px solid #0033a0;">
+                    <h3 style="color: #0033a0;">GEALAN</h3>
+                    <h4 data-i18n="prof2Subtitle"></h4>
+                </div>
+                <div class="card profile-card fade-in" style="border-top: 5px solid #008a4f;">
+                    <h3 style="color: #008a4f;">SALAMANDER</h3>
+                    <h4 data-i18n="prof3Subtitle"></h4>
+                </div>
+            </div>
+        </section>
+
+        <section class="info-section dark-bg">
+            <h2 class="section-title fade-in" data-i18n="processTitle"></h2>
+            <div class="grid-container">
+                <div class="card fade-in">
+                    <h3 data-i18n="proc1Title"></h3>
+                    <p data-i18n="proc1Desc"></p>
+                </div>
+                <div class="card fade-in">
+                    <h3 data-i18n="proc2Title"></h3>
+                    <p data-i18n="proc2Desc"></p>
+                </div>
+                <div class="card fade-in">
+                    <h3 data-i18n="proc3Title"></h3>
+                    <p data-i18n="proc3Desc"></p>
+                </div>
+                <div class="card fade-in">
+                    <h3 data-i18n="proc4Title"></h3>
+                    <p data-i18n="proc4Desc"></p>
+                </div>
             </div>
         </section>
     </main>
 
     <footer>
-        <span id="footer"></span>
-        <!-- Ссылки в футере с id для возможной локализации через script.js -->
+        <span data-i18n="footerText"></span>
         <div class="legal-links">
-            <a href="datenschutz.html" id="footer-datenschutz">Datenschutz</a> |
-            <a href="impressum.html" id="footer-impressum">Impressum</a>
+            <a href="datenschutz.html" data-i18n="navDatenschutz"></a> |
+            <a href="impressum.html" data-i18n="navImpressum"></a>
         </div>
     </footer>
-
     <script src="script.js"></script>
-    <script>
-        const menuToggle = document.getElementById('menu-toggle');
-        const navMenu = document.getElementById('nav-menu');
-        menuToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
-    </script>
 </body>
 </html>
