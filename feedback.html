@@ -35,18 +35,19 @@
         <section class="info-section light-bg" style="min-height: 70vh; display: flex; align-items: center;">
             <div class="form-wrapper fade-in" style="width: 100%;">
                 <h2 class="section-title" data-i18n="navFeedback" style="text-align: center; margin-bottom: 30px;"></h2>
-                <form class="modern-form" onsubmit="event.preventDefault(); alert('Vielen Dank für Ihre Nachricht!');">
+                
+                <form class="modern-form" action="https://formspree.io/f/mrpzwplp" method="POST">
                     <div>
                         <label data-i18n="formName"></label>
-                        <input type="text" required>
+                        <input type="text" name="name" required>
                     </div>
                     <div>
                         <label data-i18n="formEmail"></label>
-                        <input type="email" required>
+                        <input type="email" name="email" required>
                     </div>
                     <div>
                         <label data-i18n="formMessage"></label>
-                        <textarea rows="5" required></textarea>
+                        <textarea name="message" rows="5" required></textarea>
                     </div>
                     <button type="submit" class="cta-button" data-i18n="formSubmit" style="width: 100%; text-align: center;"></button>
                 </form>
