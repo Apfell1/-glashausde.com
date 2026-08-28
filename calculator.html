@@ -7,10 +7,10 @@
     <link rel="stylesheet" href="style.css">
     <style>
         .calc-wrapper {
-            max-width: 800px;
-            margin: 50px auto;
+            max-width: 850px;
+            margin: 40px auto;
             background: rgba(255, 255, 255, 0.98);
-            padding: 50px;
+            padding: 45px;
             border-radius: 20px;
             box-shadow: 0 25px 60px rgba(0,0,0,0.15);
             text-align: left;
@@ -18,11 +18,11 @@
         }
         .calc-header {
             text-align: center;
-            margin-bottom: 35px;
+            margin-bottom: 30px;
         }
         .calc-header h1 {
             color: var(--primary-blue);
-            font-size: 32px;
+            font-size: 30px;
             font-weight: 800;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -30,21 +30,43 @@
         }
         .calc-header p {
             color: #666;
-            font-size: 16px;
+            font-size: 15px;
+        }
+        .calc-tabs {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        .calc-tab {
+            flex: 1;
+            padding: 12px;
+            text-align: center;
+            background: #f0f2f5;
+            border: 2px solid transparent;
+            border-radius: 10px;
+            font-weight: 700;
+            cursor: pointer;
+            color: var(--primary-blue);
+            transition: var(--transition);
+        }
+        .calc-tab.active {
+            background: #fff;
+            border-color: var(--accent-red);
+            color: var(--accent-red);
         }
         .calc-group {
-            margin-bottom: 25px;
+            margin-bottom: 22px;
         }
         .calc-group label {
             display: block;
             font-weight: 700;
             color: var(--primary-blue);
-            margin-bottom: 10px;
-            font-size: 15px;
+            margin-bottom: 8px;
+            font-size: 14px;
         }
         .calc-group select, .calc-group input {
             width: 100%;
-            padding: 16px;
+            padding: 14px;
             border: 2px solid #e0e0e0;
             border-radius: 10px;
             font-size: 16px;
@@ -56,59 +78,71 @@
             outline: none;
             box-shadow: 0 0 0 4px rgba(11, 32, 61, 0.08);
         }
+        .input-row {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 15px;
+        }
+        .calc-section-panel {
+            display: none;
+        }
+        .calc-section-panel.active {
+            display: block;
+        }
         .calc-result-box {
-            margin-top: 35px;
-            padding: 30px;
+            margin-top: 30px;
+            padding: 25px;
             background: linear-gradient(135deg, rgba(11, 32, 61, 0.03) 0%, rgba(11, 32, 61, 0.07) 100%);
             border-left: 6px solid var(--accent-red);
             border-radius: 12px;
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 12px;
         }
         .price-row {
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid rgba(0,0,0,0.06);
-            padding-bottom: 12px;
+            padding-bottom: 10px;
         }
         .price-row:last-of-type {
             border-bottom: none;
             padding-bottom: 0;
         }
         .price-label {
-            font-size: 15px;
+            font-size: 14px;
             font-weight: 700;
             color: #444;
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
         .price-value {
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 900;
             color: var(--primary-blue);
         }
         .price-value.brutto {
             color: var(--accent-red);
-            font-size: 32px;
+            font-size: 30px;
         }
         .calc-notice {
-            font-size: 13px;
+            font-size: 12px;
             color: #666;
             margin-top: 10px;
-            line-height: 1.6;
+            line-height: 1.5;
             border-top: 1px solid rgba(0,0,0,0.06);
-            padding-top: 15px;
+            padding-top: 12px;
         }
         .calc-action {
-            margin-top: 30px;
+            margin-top: 25px;
             text-align: center;
         }
         @media (max-width: 768px) {
-            .calc-wrapper { padding: 25px; margin: 20px; }
-            .price-row { flex-direction: column; align-items: flex-start; gap: 5px; }
-            .price-value, .price-value.brutto { font-size: 24px; }
+            .calc-wrapper { padding: 20px; margin: 15px; }
+            .input-row { grid-template-columns: 1fr; }
+            .price-row { flex-direction: column; align-items: flex-start; gap: 4px; }
+            .price-value, .price-value.brutto { font-size: 22px; }
         }
     </style>
 </head>
@@ -141,7 +175,7 @@
             <div class="calc-wrapper fade-in">
                 <div class="calc-header">
                     <h1>Fenster-Konfigurator</h1>
-                    <p>Berechnen Sie den geschätzten Preis für Ihre neuen Fenster inkl. gesetzlicher Mehrwertsteuer</p>
+                    <p>Wählen Sie ein Standardmaß aus oder geben Sie die Wunschfläche ein</p>
                 </div>
                 
                 <div class="calc-group">
@@ -153,9 +187,51 @@
                     </select>
                 </div>
 
-                <div class="calc-group">
-                    <label for="areaInput">Ungefähre Gesamtfläche (in m²):</label>
-                    <input type="number" id="areaInput" value="50" min="1" max="2000" oninput="calculatePrice()">
+                <div class="calc-tabs">
+                    <div class="calc-tab active" id="tabStandard" onclick="switchMode('standard')">Nach Standardgröße</div>
+                    <div class="calc-tab" id="tabManual" onclick="switchMode('manual')">Manuelle Fläche (m²)</div>
+                </div>
+
+                <!-- Режим стандартных размеров -->
+                <div class="calc-section-panel active" id="panelStandard">
+                    <div class="calc-group">
+                        <label for="stdSizeSelect">Standard-Fenstergröße (BxH):</label>
+                        <select id="stdSizeSelect" onchange="calculatePrice()">
+                            <optgroup label="Kleine Fenster (Bad, Flur, Keller)">
+                                <option value="0.25">50 × 50 cm (0.25 m²)</option>
+                                <option value="0.36">60 × 60 cm (0.36 m²)</option>
+                                <option value="0.48">60 × 80 cm (0.48 m²)</option>
+                                <option value="0.54">60 × 90 cm (0.54 m²)</option>
+                            </optgroup>
+                            <optgroup label="Mittlere Fenster (Wohn- / Schlafzimmer)">
+                                <option value="0.80">80 × 100 cm (0.80 m²)</option>
+                                <option value="1.20" selected>100 × 120 cm - Klassisches Standardmaß (1.20 m²)</option>
+                                <option value="1.44">120 × 120 cm (1.44 m²)</option>
+                            </optgroup>
+                            <optgroup label="Große Fenster / Zweiflügelige Elemente">
+                                <option value="1.56">130 × 120 cm (1.56 m²)</option>
+                                <option value="1.80">150 × 120 cm (1.80 m²)</option>
+                                <option value="1.96">140 × 140 cm (1.96 m²)</option>
+                            </optgroup>
+                            <optgroup label="Bodentiefe Fenster / Fenstertüren">
+                                <option value="3.15">150 × 210 cm (3.15 m²)</option>
+                                <option value="3.78">180 × 210 cm (3.78 m²)</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <div class="calc-group">
+                        <label for="quantityInput">Anzahl der Fenster (Stück):</label>
+                        <input type="number" id="quantityInput" value="10" min="1" max="500" oninput="calculatePrice()">
+                    </div>
+                </div>
+
+                <!-- Режим ручного ввода квадратуры -->
+                <div class="calc-section-panel" id="panelManual">
+                    <div class="calc-group">
+                        <label for="areaInput">Ungefähre Gesamtfläche (in m²):</label>
+                        <input type="number" id="areaInput" value="50" min="1" max="2000" oninput="calculatePrice()">
+                    </div>
                 </div>
 
                 <div class="calc-result-box">
@@ -168,7 +244,7 @@
                         <span class="price-value brutto" id="bruttoOutput">0.00 €</span>
                     </div>
                     <div class="calc-notice">
-                        * <strong>Wichtiger Hinweis:</strong> Dies ist ein automatischer Vorab-Rechner. Alle Preise verstehen sich inklusive bzw. exklusive der gesetzlichen Mehrwertsteuer von **19%**. Der genaue Endpreis kann nach einem detaillierten Aufmaß vor Ort und individueller Absprache variieren. Rufen Sie uns an oder senden Sie uns eine Anfrage für ein verbindliches Angebot!
+                        * <strong>Wichtiger Hinweis:</strong> Dies ist ein automatischer Vorab-Rechner. Alle Preise verstehen sich inklusive der gesetzlichen Mehrwertsteuer von 19%. Der genaue Endpreis kann nach einem detaillierten Aufmaß vor Ort und individueller Absprache variieren. Rufen Sie uns an oder senden Sie uns eine Anfrage für ein verbindliches Angebot!
                     </div>
                 </div>
 
@@ -189,24 +265,43 @@
 
     <script src="script.js"></script>
     <script>
+        let currentMode = 'standard';
+
+        function switchMode(mode) {
+            currentMode = mode;
+            document.getElementById('tabStandard').classList.toggle('active', mode === 'standard');
+            document.getElementById('tabManual').classList.toggle('active', mode === 'manual');
+            document.getElementById('panelStandard').classList.toggle('active', mode === 'standard');
+            document.getElementById('panelManual').classList.toggle('active', mode === 'manual');
+            calculatePrice();
+        }
+
         function calculatePrice() {
             const basePricePerSqm = parseFloat(document.getElementById('profileSelect').value);
-            const area = parseFloat(document.getElementById('areaInput').value) || 0;
+            let totalArea = 0;
 
-            // Внутренняя скрытая градация наценки по площади
+            if (currentMode === 'standard') {
+                const singleArea = parseFloat(document.getElementById('stdSizeSelect').value) || 0;
+                const quantity = parseInt(document.getElementById('quantityInput').value) || 0;
+                totalArea = singleArea * quantity;
+            } else {
+                totalArea = parseFloat(document.getElementById('areaInput').value) || 0;
+            }
+
+            // Фоновая скрытая градация наценки по общей площади
             let markup = 0.40; // До 100 м² = 40%
-            if (area >= 100 && area < 200) {
+            if (totalArea >= 100 && totalArea < 200) {
                 markup = 0.35; // 100 - 200 м² = 35%
-            } else if (area >= 200 && area < 400) {
+            } else if (totalArea >= 200 && totalArea < 400) {
                 markup = 0.30; // 200 - 400 м² = 30%
-            } else if (area >= 400 && area < 700) {
+            } else if (totalArea >= 400 && totalArea < 700) {
                 markup = 0.25; // 400 - 700 м² = 25%
-            } else if (area >= 700) {
+            } else if (totalArea >= 700) {
                 markup = 0.20; // От 700 м² = 20%
             }
 
-            const nettoPrice = area * basePricePerSqm * (1 + markup);
-            const bruttoPrice = nettoPrice * 1.19; // Добавляем 19% НДС
+            const nettoPrice = totalArea * basePricePerSqm * (1 + markup);
+            const bruttoPrice = nettoPrice * 1.19; // Расчет с учетом 19% НДС
 
             document.getElementById('nettoOutput').innerText = nettoPrice.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " €";
             document.getElementById('bruttoOutput').innerText = bruttoPrice.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " €";
