@@ -33,28 +33,6 @@
             color: #666;
             font-size: 15px;
         }
-        .calc-tabs {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 25px;
-        }
-        .calc-tab {
-            flex: 1;
-            padding: 12px;
-            text-align: center;
-            background: #f0f2f5;
-            border: 2px solid transparent;
-            border-radius: 10px;
-            font-weight: 700;
-            cursor: pointer;
-            color: var(--primary-blue);
-            transition: var(--transition);
-        }
-        .calc-tab.active {
-            background: #fff;
-            border-color: var(--accent-red);
-            color: var(--accent-red);
-        }
         .calc-group {
             margin-bottom: 22px;
         }
@@ -78,17 +56,6 @@
             border-color: var(--primary-blue);
             outline: none;
             box-shadow: 0 0 0 4px rgba(11, 32, 61, 0.08);
-        }
-        .input-row {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 15px;
-        }
-        .calc-section-panel {
-            display: none;
-        }
-        .calc-section-panel.active {
-            display: block;
         }
         .calc-result-box {
             margin-top: 30px;
@@ -141,7 +108,6 @@
         }
         @media (max-width: 768px) {
             .calc-wrapper { padding: 20px; margin: 15px; }
-            .input-row { grid-template-columns: 1fr; }
             .price-row { flex-direction: column; align-items: flex-start; gap: 4px; }
             .price-value, .price-value.brutto { font-size: 22px; }
         }
@@ -176,7 +142,7 @@
             <div class="calc-wrapper fade-in">
                 <div class="calc-header">
                     <h1>Fenster-Konfigurator</h1>
-                    <p>Wählen Sie ein Standardmaß aus oder geben Sie die Wunschfläche ein</p>
+                    <p>Wählen Sie ein Standardmaß und die Anzahl der Fenster aus</p>
                 </div>
                 
                 <div class="calc-group">
@@ -188,51 +154,35 @@
                     </select>
                 </div>
 
-                <div class="calc-tabs">
-                    <div class="calc-tab active" id="tabStandard" onclick="switchMode('standard')">Nach Standardgröße</div>
-                    <div class="calc-tab" id="tabManual" onclick="switchMode('manual')">Manuelle Fläche (m²)</div>
+                <div class="calc-group">
+                    <label for="stdSizeSelect">Standard-Fenstergröße (BxH):</label>
+                    <select id="stdSizeSelect" onchange="calculatePrice()">
+                        <optgroup label="Kleine Fenster (Bad, Flur, Keller)">
+                            <option value="0.25">50 × 50 cm (0.25 m²)</option>
+                            <option value="0.36">60 × 60 cm (0.36 m²)</option>
+                            <option value="0.48">60 × 80 cm (0.48 m²)</option>
+                            <option value="0.54">60 × 90 cm (0.54 m²)</option>
+                        </optgroup>
+                        <optgroup label="Mittlere Fenster (Wohn- / Schlafzimmer)">
+                            <option value="0.80">80 × 100 cm (0.80 m²)</option>
+                            <option value="1.20" selected>100 × 120 cm - Klassisches Standardmaß (1.20 m²)</option>
+                            <option value="1.44">120 × 120 cm (1.44 m²)</option>
+                        </optgroup>
+                        <optgroup label="Große Fenster / Zweiflügelige Elemente">
+                            <option value="1.56">130 × 120 cm (1.56 m²)</option>
+                            <option value="1.80">150 × 120 cm (1.80 m²)</option>
+                            <option value="1.96">140 × 140 cm (1.96 m²)</option>
+                        </optgroup>
+                        <optgroup label="Bodentiefe Fenster / Fenstertüren">
+                            <option value="3.15">150 × 210 cm (3.15 m²)</option>
+                            <option value="3.78">180 × 210 cm (3.78 m²)</option>
+                        </optgroup>
+                    </select>
                 </div>
 
-                <!-- Режим стандартных размеров -->
-                <div class="calc-section-panel active" id="panelStandard">
-                    <div class="calc-group">
-                        <label for="stdSizeSelect">Standard-Fenstergröße (BxH):</label>
-                        <select id="stdSizeSelect" onchange="calculatePrice()">
-                            <optgroup label="Kleine Fenster (Bad, Flur, Keller)">
-                                <option value="0.25">50 × 50 cm (0.25 m²)</option>
-                                <option value="0.36">60 × 60 cm (0.36 m²)</option>
-                                <option value="0.48">60 × 80 cm (0.48 m²)</option>
-                                <option value="0.54">60 × 90 cm (0.54 m²)</option>
-                            </optgroup>
-                            <optgroup label="Mittlere Fenster (Wohn- / Schlafzimmer)">
-                                <option value="0.80">80 × 100 cm (0.80 m²)</option>
-                                <option value="1.20" selected>100 × 120 cm - Klassisches Standardmaß (1.20 m²)</option>
-                                <option value="1.44">120 × 120 cm (1.44 m²)</option>
-                            </optgroup>
-                            <optgroup label="Große Fenster / Zweiflügelige Elemente">
-                                <option value="1.56">130 × 120 cm (1.56 m²)</option>
-                                <option value="1.80">150 × 120 cm (1.80 m²)</option>
-                                <option value="1.96">140 × 140 cm (1.96 m²)</option>
-                            </optgroup>
-                            <optgroup label="Bodentiefe Fenster / Fenstertüren">
-                                <option value="3.15">150 × 210 cm (3.15 m²)</option>
-                                <option value="3.78">180 × 210 cm (3.78 m²)</option>
-                            </optgroup>
-                        </select>
-                    </div>
-
-                    <div class="calc-group">
-                        <label for="quantityInput">Anzahl der Fenster (Stück):</label>
-                        <input type="number" id="quantityInput" value="10" min="1" max="500" oninput="calculatePrice()">
-                    </div>
-                </div>
-
-                <!-- Режим ручного ввода квадратуры -->
-                <div class="calc-section-panel" id="panelManual">
-                    <div class="calc-group">
-                        <label for="areaInput">Ungefähre Gesamtfläche (in m²):</label>
-                        <input type="number" id="areaInput" value="50" min="1" max="2000" oninput="calculatePrice()">
-                    </div>
+                <div class="calc-group">
+                    <label for="quantityInput">Anzahl der Fenster (Stück):</label>
+                    <input type="number" id="quantityInput" value="10" min="1" max="500" oninput="calculatePrice()">
                 </div>
 
                 <div class="calc-result-box">
@@ -266,28 +216,11 @@
 
     <script src="script.js"></script>
     <script>
-        let currentMode = 'standard';
-
-        function switchMode(mode) {
-            currentMode = mode;
-            document.getElementById('tabStandard').classList.toggle('active', mode === 'standard');
-            document.getElementById('tabManual').classList.toggle('active', mode === 'manual');
-            document.getElementById('panelStandard').classList.toggle('active', mode === 'standard');
-            document.getElementById('panelManual').classList.toggle('active', mode === 'manual');
-            calculatePrice();
-        }
-
         function calculatePrice() {
             const basePricePerSqm = parseFloat(document.getElementById('profileSelect').value);
-            let totalArea = 0;
-
-            if (currentMode === 'standard') {
-                const singleArea = parseFloat(document.getElementById('stdSizeSelect').value) || 0;
-                const quantity = parseInt(document.getElementById('quantityInput').value) || 0;
-                totalArea = singleArea * quantity;
-            } else {
-                totalArea = parseFloat(document.getElementById('areaInput').value) || 0;
-            }
+            const singleArea = parseFloat(document.getElementById('stdSizeSelect').value) || 0;
+            const quantity = parseInt(document.getElementById('quantityInput').value) || 0;
+            const totalArea = singleArea * quantity;
 
             // Фоновая скрытая градация наценки по общей площади
             let markup = 0.40; // До 100 м² = 40%
