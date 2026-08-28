@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GH Service | Fenster-Kostenrechner</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .calc-container {
+            max-width: 750px;
+            margin: 40px auto;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 18px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+            text-align: left;
+        }
+        .calc-group {
+            margin-bottom: 20px;
+        }
+        .calc-group label {
+            display: block;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-bottom: 8px;
+        }
+        .calc-group select, .calc-group input {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #dcdcdc;
+            border-radius: 8px;
+            font-size: 16px;
+            background: #fbfbfb;
+        }
+        .calc-result {
+            margin-top: 30px;
+            padding: 25px;
+            background: rgba(11, 32, 61, 0.04);
+            border-left: 5px solid var(--accent-red);
+            border-radius: 8px;
+        }
+        .calc-result h3 {
+            color: var(--primary-blue);
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .calc-notice {
+            font-size: 13px;
+            color: #666;
+            margin-top: 15px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+       <div class="logo">
+            <a href="index.html">
+                GH <span style="color: var(--accent-red); margin-left: 5px;">Service</span>
+            </a>
+       </div>
+        <div class="header-right">
+            <button class="menu-toggle" id="menu-toggle">☰</button>
+            <div class="contact-info">📞 +49 15567548964</div>
+            <div class="lang-switch">
+                <a href="index.html">DE</a>
+            </div>
+            <nav id="nav-menu" class="nav-menu">
+                <a href="index.html">Startseite</a>
+                <a href="about.html">Über uns</a>
+                <a href="gallery.html">Galerie</a>
+                <a href="contact.html">Kontakt</a>
+                <a href="feedback.html">Feedback</a>
+                <a href="calculator.html" style="color: var(--accent-red);">Rechner</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="info-section light-bg">
+            <div class="calc-container fade-in">
+                <h1 class="section-title" style="font-size: 28px; margin-bottom: 25px; text-align: center;">Online Fenster-Konfigurator</h1>
+                
+                <div class="calc-group">
+                    <label for="profileSelect">Wählen Sie das Profilsystem:</label>
+                    <select id="profileSelect" onchange="calculatePrice()">
+                        <option value="139.60">Glasso 76S VISION (Premium)</option>
+                        <option value="152.53">Salamander proEvolution AD 72 (Premium)</option>
+                        <option value="171.90">Salamander bluEvolution 82 VISION (Top-Modell)</option>
+                    </select>
+                </div>
+
+                <div class="calc-group">
+                    <label for="areaInput">Ungefähre Gesamtfläche in m²:</label>
+                    <input type="number" id="areaInput" value="50" min="1" max="2000" oninput="calculatePrice()">
+                </div>
+
+                <div class="calc-result">
+                    <h3 id="priceOutput">0.00 €</h3>
+                    <p id="markupOutput" style="font-weight: 600; color: #444;"></p>
+                    <div class="calc-notice">
+                        * <strong>Wichtiger Hinweis:</strong> Dies ist ein unverbindlicher Online-Vorab-Rechner. Die tatsächlichen Kosten können nach einem genauen Aufmaß vor Ort und nach persönlicher Absprache sowohl nach oben als auch nach unten abweichen. Rufen Sie uns an, um ein verbindliches Angebot zu erhalten!
+                    </div>
+                </div>
+
+                <div style="margin-top: 25px; text-align: center;">
+                    <a href="contact.html" class="cta-button">Kostenloses Angebot anfordern</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <span>© 2026 GH Service. Hainholzer Damm 1, 25337 Elmshorn | +49 15567548964</span>
+        <div class="legal-links">
+            <a href="datenschutz.html">Datenschutz</a> |
+            <a href="impressum.html">Impressum</a>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        function calculatePrice() {
+            const basePricePerSqm = parseFloat(document.getElementById('profileSelect').value);
+            const area = parseFloat(document.getElementById('areaInput').value) || 0;
+
+            let markup = 0.40; // До 100 кв.м = 40%
+            let markupText = "Angewandte Marge: 40% (bis 100 m²)";
+
+            if (area >= 100 && area < 200) {
+                markup = 0.35;
+                markupText = "Angewandte Marge: 35% (100 - 200 m²)";
+            } else if (area >= 200 && area < 400) {
+                markup = 0.30;
+                markupText = "Angewandte Marge: 30% (200 - 400 m²)";
+            } else if (area >= 400 && area < 700) {
+                markup = 0.25;
+                markupText = "Angewandte Marge: 25% (400 - 700 m²)";
+            } else if (area >= 700) {
+                markup = 0.20;
+                markupText = "Angewandte Marge: 20% (ab 700 m²)";
+            }
+
+            const finalPrice = area * basePricePerSqm * (1 + markup);
+
+            document.getElementById('priceOutput').innerText = "Geschätzter Netto-Preis: " + finalPrice.toFixed(2) + " €";
+            document.getElementById('markupOutput').innerText = markupText;
+        }
+
+        window.onload = calculatePrice;
+    </script>
+</body>
+</html>
