@@ -3,52 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GH Service | Fenster-Kostenrechner</title>
+    <title>GH Service | Online Fenster-Konfigurator</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        .calc-container {
-            max-width: 750px;
-            margin: 40px auto;
-            background: #ffffff;
-            padding: 40px;
-            border-radius: 18px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.12);
+        .calc-wrapper {
+            max-width: 800px;
+            margin: 50px auto;
+            background: rgba(255, 255, 255, 0.98);
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 25px 60px rgba(0,0,0,0.15);
             text-align: left;
+            backdrop-filter: blur(10px);
+        }
+        .calc-header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+        .calc-header h1 {
+            color: var(--primary-blue);
+            font-size: 32px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        .calc-header p {
+            color: #666;
+            font-size: 16px;
         }
         .calc-group {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
         }
         .calc-group label {
             display: block;
             font-weight: 700;
             color: var(--primary-blue);
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            font-size: 15px;
         }
         .calc-group select, .calc-group input {
             width: 100%;
-            padding: 14px;
-            border: 1px solid #dcdcdc;
-            border-radius: 8px;
+            padding: 16px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
             font-size: 16px;
-            background: #fbfbfb;
+            background: #fff;
+            transition: var(--transition);
         }
-        .calc-result {
-            margin-top: 30px;
-            padding: 25px;
-            background: rgba(11, 32, 61, 0.04);
-            border-left: 5px solid var(--accent-red);
-            border-radius: 8px;
+        .calc-group select:focus, .calc-group input:focus {
+            border-color: var(--primary-blue);
+            outline: none;
+            box-shadow: 0 0 0 4px rgba(11, 32, 61, 0.08);
         }
-        .calc-result h3 {
+        .calc-result-box {
+            margin-top: 35px;
+            padding: 30px;
+            background: linear-gradient(135deg, rgba(11, 32, 61, 0.03) 0%, rgba(11, 32, 61, 0.07) 100%);
+            border-left: 6px solid var(--accent-red);
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .calc-result-title {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #555;
+            font-weight: 700;
+        }
+        .calc-price {
+            font-size: 38px;
+            font-weight: 900;
             color: var(--primary-blue);
-            font-size: 24px;
-            margin-bottom: 10px;
         }
         .calc-notice {
             font-size: 13px;
             color: #666;
             margin-top: 15px;
-            line-height: 1.5;
+            line-height: 1.6;
+            border-top: 1px solid rgba(0,0,0,0.06);
+            padding-top: 15px;
+        }
+        .calc-action {
+            margin-top: 30px;
+            text-align: center;
+        }
+        @media (max-width: 768px) {
+            .calc-wrapper { padding: 25px; margin: 20px; }
+            .calc-price { font-size: 28px; }
         }
     </style>
 </head>
@@ -78,8 +122,11 @@
 
     <main>
         <section class="info-section light-bg">
-            <div class="calc-container fade-in">
-                <h1 class="section-title" style="font-size: 28px; margin-bottom: 25px; text-align: center;">Online Fenster-Konfigurator</h1>
+            <div class="calc-wrapper fade-in">
+                <div class="calc-header">
+                    <h1>Fenster-Konfigurator</h1>
+                    <p>Berechnen Sie den geschätzten Preis für Ihre neuen Fenster in wenigen Sekunden</p>
+                </div>
                 
                 <div class="calc-group">
                     <label for="profileSelect">Wählen Sie das Profilsystem:</label>
@@ -91,19 +138,19 @@
                 </div>
 
                 <div class="calc-group">
-                    <label for="areaInput">Ungefähre Gesamtfläche in m²:</label>
+                    <label for="areaInput">Ungefähre Gesamtfläche (in m²):</label>
                     <input type="number" id="areaInput" value="50" min="1" max="2000" oninput="calculatePrice()">
                 </div>
 
-                <div class="calc-result">
-                    <h3 id="priceOutput">0.00 €</h3>
-                    <p id="markupOutput" style="font-weight: 600; color: #444;"></p>
+                <div class="calc-result-box">
+                    <span class="calc-result-title">Unverbindlicher Richtpreis (Netto)</span>
+                    <div class="calc-price" id="priceOutput">0.00 €</div>
                     <div class="calc-notice">
-                        * <strong>Wichtiger Hinweis:</strong> Dies ist ein unverbindlicher Online-Vorab-Rechner. Die tatsächlichen Kosten können nach einem genauen Aufmaß vor Ort und nach persönlicher Absprache sowohl nach oben als auch nach unten abweichen. Rufen Sie uns an, um ein verbindliches Angebot zu erhalten!
+                        * <strong>Wichtiger Hinweis:</strong> Dies ist ein automatischer Vorab-Rechner. Der genaue Endpreis kann nach einem detaillierten Aufmaß vor Ort und individueller Absprache variieren. Rufen Sie uns an oder senden Sie uns eine Anfrage für ein verbindliches Angebot!
                     </div>
                 </div>
 
-                <div style="margin-top: 25px; text-align: center;">
+                <div class="calc-action">
                     <a href="contact.html" class="cta-button">Kostenloses Angebot anfordern</a>
                 </div>
             </div>
@@ -124,27 +171,22 @@
             const basePricePerSqm = parseFloat(document.getElementById('profileSelect').value);
             const area = parseFloat(document.getElementById('areaInput').value) || 0;
 
-            let markup = 0.40; // До 100 кв.м = 40%
-            let markupText = "Angewandte Marge: 40% (bis 100 m²)";
-
+            // Скрытая градация наценки по площади (клиент ее не видит)
+            let markup = 0.40; // До 100 м² = 40%
             if (area >= 100 && area < 200) {
-                markup = 0.35;
-                markupText = "Angewandte Marge: 35% (100 - 200 m²)";
+                markup = 0.35; // 100 - 200 м² = 35%
             } else if (area >= 200 && area < 400) {
-                markup = 0.30;
-                markupText = "Angewandte Marge: 30% (200 - 400 m²)";
+                markup = 0.30; // 200 - 400 м² = 30%
             } else if (area >= 400 && area < 700) {
-                markup = 0.25;
-                markupText = "Angewandte Marge: 25% (400 - 700 m²)";
+                markup = 0.25; // 400 - 700 м² = 25%
             } else if (area >= 700) {
-                markup = 0.20;
-                markupText = "Angewandte Marge: 20% (ab 700 m²)";
+                markup = 0.20; // От 700 м² = 20%
             }
 
             const finalPrice = area * basePricePerSqm * (1 + markup);
 
-            document.getElementById('priceOutput').innerText = "Geschätzter Netto-Preis: " + finalPrice.toFixed(2) + " €";
-            document.getElementById('markupOutput').innerText = markupText;
+            // Выводим только итоговую сумму без упоминания формул и процентов
+            document.getElementById('priceOutput').innerText = finalPrice.toLocaleString('de-DE', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " €";
         }
 
         window.onload = calculatePrice;
