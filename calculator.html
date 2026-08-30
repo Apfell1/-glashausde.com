@@ -223,8 +223,10 @@
             const totalArea = singleArea * quantity;
 
             // Фоновая скрытая градация наценки по общей площади
-            let markup = 0.40; // До 100 м² = 40%
-            if (totalArea >= 100 && totalArea < 200) {
+            let markup = 0.50; // До 70 м² = 50%
+            if (totalArea >= 70 && totalArea < 100) {
+                markup = 0.40; // 70 - 100 м² = 40%
+            } else if (totalArea >= 100 && totalArea < 200) {
                 markup = 0.35; // 100 - 200 м² = 35%
             } else if (totalArea >= 200 && totalArea < 400) {
                 markup = 0.30; // 200 - 400 м² = 30%
